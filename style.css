@@ -1,0 +1,759 @@
+/* =======================================
+   Beyout New Mansoura
+   Version : 1.1 Development
+   Developer : Youseef Mohamed
+======================================= */
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+h1{
+    margin:20px;
+    color:#003366;
+}
+
+.container{
+
+    position:relative;
+
+    width:1000px;
+
+    margin:30px auto;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+#masterplan{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:12px;
+
+}
+
+/* ========================= */
+/* Buildings */
+/* ========================= */
+
+.building{
+    position:absolute;
+    width:40px;
+    height:40px;
+
+    border:1px solid rgba(255,0,0,.15);
+    background:rgba(255,0,0,.08);
+
+    cursor:pointer;
+
+    display:block;
+    opacity:0;
+}
+
+
+/* Building A01 */
+#A01{
+    left:594.222px;
+    top:404.792px;
+}
+
+/* Building A02 */
+#A02{
+    left:597.222px;
+    top:457.792px;
+}    
+#A39{ 
+    left:883.222px; 
+    top:456.792px;
+ }   
+
+#A09{
+   left:504.222px; 
+   top:456.125px; 
+}
+#A10{
+    left:502.222px;
+    top:400.125px; 
+}    
+#A20{ 
+    left:693.222px; 
+    top:404.125px; 
+}    
+#A19{ 
+    left:693.222px; 
+    top:457.125px; 
+}
+#A31{ 
+    left:787.222px; 
+    top:408.125px; 
+}
+#A32{ 
+    left:790.222px; 
+    top:459.125px;
+ }   
+#A40{ 
+    left:882.222px; 
+    top:410.125px; 
+}
+
+#B33{ 
+    left:781.222px; 
+    top:552.125px; 
+}
+#B34{ 
+    left:779.222px;
+    top:601.125px; 
+}
+#B35{ 
+    left:780.222px;
+     top:674.125px; 
+}
+#B13{
+     left:781.222px; 
+    top:765.458px; 
+}
+#B12{ 
+    left:780.222px; 
+    top:828.458px; 
+}
+#B11{ 
+    left:782.222px; 
+    top:882.458px; 
+}
+#B03{ 
+    left:586.222px; 
+    top:537.792px; 
+}
+#B04{
+    left:585.222px; 
+    top:608.792px; 
+}
+#B05{ 
+    left:584.222px;
+    top:660.792px; 
+}
+#B08{ 
+    left:493.222px;
+    top:564.792px; 
+}
+#B07{ 
+    left:495.222px;
+    top:639.458px; 
+}
+#B06{ 
+    left:496.222px;
+    top:687.792px; 
+}
+
+#C18{ 
+    left: 685.222px;
+    top:546.792px;
+}
+#C17{ 
+    left:684.222px; 
+    top:598.792px; 
+}
+#C16{ 
+    left:685.222px; 
+    top:654.792px; 
+}
+#C38{ 
+    left:686.222px; 
+    top:785.792px; 
+}
+#C37{ 
+    left:684.222px; 
+    top:837.792px; 
+}
+
+#C36{ 
+    left:685.222px; 
+    top:894.792px; 
+}
+#D43{ 
+    left:592.222px; 
+    top:768.792px; 
+}
+
+#D44{ 
+    left:590.222px; 
+    top:816.792px; 
+}
+#E42{ 
+    left:492.222px; 
+    top:762.792px; 
+}
+
+#E41{ 
+    left:493.222px; 
+    top:814.792px; 
+}
+
+ 
+/* ========================= */
+/* Popup */
+/* ========================= */
+
+.popup button{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+/* Open Availability */
+
+#openDrive{
+
+    background:#0066cc;
+
+    color:white;
+
+}
+
+#openDrive:hover{
+
+    background:#004d99;
+
+    transform:translateY(-2px);
+
+}
+
+/* Close */
+
+#close{
+
+    background:#eeeeee;
+
+    color:#333;
+
+}
+
+#close:hover{
+
+    background:#d9d9d9;
+
+    transform:translateY(-2px);
+
+}
+
+/* ========================= */
+/* Buttons */
+/* ========================= */
+
+
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(.9);
+
+    width:340px;
+
+    background:#fff;
+    border-radius:16px;
+
+    padding:25px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    display:none;
+
+    text-align:center;
+
+    animation:popup .25s ease;
+}
+.popup h2{
+
+    margin-top:0;
+
+    margin-bottom:25px;
+
+    color:#003366;
+
+    font-size:28px;
+
+    border-bottom:2px solid #eee;
+
+    padding-bottom:15px;
+
+}
+
+@keyframes popup{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.85);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+}
+
+.popup button{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:8px 0;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+#openDrive{
+
+    background:#0066cc;
+
+    color:white;
+
+}
+
+#openDrive:hover{
+
+    background:#0052a3;
+
+}
+
+#close{
+
+    background:#e5e5e5;
+
+}
+
+#close:hover{
+
+    background:#d2d2d2;
+
+}
+
+.popup button:hover{
+
+    background:#00509e;
+
+}
+.building{
+
+    transition:.25s;
+
+}
+
+.building:hover{
+
+    transform:scale(1.15);
+
+    border:2px solid #0099ff;
+
+    background:rgba(0,153,255,.20);
+
+    box-shadow:0 0 12px rgba(0,153,255,.7);
+
+}
+/* ========================= */
+/* Tooltip */
+/* ========================= */
+
+#tooltip{
+
+    position:absolute;
+
+    display:none;
+
+    padding:8px 14px;
+
+    background:#003366;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    transition:.15s;
+
+}
+/* ========================= */
+/* Search */
+/* ========================= */
+
+#searchBuilding{
+
+    width:280px;
+
+    padding:12px 18px;
+
+    margin:20px;
+
+    border:2px solid #003366;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+#searchBuilding:focus{
+
+    border-color:#0099ff;
+
+    box-shadow:0 0 10px rgba(0,153,255,.3);
+
+}
+/* ========================= */
+/* Search Highlight */
+/* ========================= */
+
+@keyframes buildingFlash {
+
+    0%{
+        background:rgba(255,255,0,.9);
+        border:2px solid yellow;
+    }
+
+    50%{
+        background:rgba(255,165,0,.9);
+        border:2px solid orange;
+    }
+
+    100%{
+        background:transparent;
+        border:1px solid rgba(255,0,0,.15);
+    }
+
+}
+
+.highlight{
+
+    animation:buildingFlash .5s linear 4;
+
+}
+@keyframes fadePopup{
+
+    from{
+
+        opacity:0;
+
+        transform:translate(-50%,-48%);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translate(-50%,-50%);
+
+    }
+
+}
+/* ========================= */
+/* Popup Header */
+/* ========================= */
+
+.popup{
+
+    overflow:hidden;
+
+}
+
+.popup-header{
+
+    background:#003366;
+
+    margin:-25px -25px 20px -25px;
+
+    padding:18px;
+
+}
+
+.popup-header h2{
+
+    margin:0;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+/* ========================= */
+/* Header */
+/* ========================= */
+
+.header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+
+}
+
+#logo{
+    
+    width:130px;
+    margin-bottom: 5px;
+    
+}
+
+.header h1{
+
+    margin:0;
+
+    color:#003366;
+
+    font-size:34px;
+
+}
+
+.header p{
+
+    margin: 5px 0 0;
+
+    color:#777;
+
+    font-size:15px;
+
+}
+/* ========================= */
+/* Toolbar */
+/* ========================= */
+
+.toolbar{
+
+    width:1000px;
+
+    margin:20px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+#searchBuilding{
+
+    flex:1;
+
+    max-width:500px;
+
+    padding:14px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+#clearSearch{
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#003366;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#clearSearch:hover{
+
+    background:#0055aa;
+
+}
+/* ========================= */
+/* Project Info */
+/* ========================= */
+
+.project-info{
+
+    width:1000px;
+
+    margin:20px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+.info-card{
+
+    flex:1;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    text-align:center;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.info-title{
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+}
+
+.info-value{
+
+    display:block;
+
+    color:#003366;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+/* ========================= */
+/* Loading Screen */
+/* ========================= */
+
+#loadingScreen{
+
+    position:fixed;
+    inset:0;
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+    opacity:1;
+    transition:opacity .6s ease;
+
+}
+
+#loadingLogo{
+
+    width:130px;
+
+    margin-bottom:20px;
+
+}
+
+#loadingScreen h1{
+
+    color:#003366;
+
+    margin:0;
+
+    font-size:34px;
+
+}
+
+#loadingScreen p{
+
+    margin:10px 0 30px;
+
+    color:#666;
+
+}
+
+.loader{
+
+    width:55px;
+
+    height:55px;
+
+    border:5px solid #ddd;
+
+    border-top:5px solid #003366;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+    margin-bottom:20px;
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
