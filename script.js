@@ -7,12 +7,56 @@
 // =========================
 // Elements
 // =========================
+// =========================
+// Availability Data
+// =========================
+
+let availability = {};
+
+// =========================
+// Load Availability
+// =========================
+
+async function loadAvailability() {
+
+    const response = await fetch("availability.json");
+
+    availability = await response.json();
+    document.querySelectorAll(".building").forEach(function(box){
+
+    const buildingCode = box.id.replace("A","BM-");
+
+    const count = availability.filter(function(item){
+
+        return item.unit.startsWith(buildingCode);
+
+    }).length;
+
+    if(count > 0){
+
+        const badge = document.createElement("div");
+
+        badge.className = "badge";
+
+        badge.innerText = count;
+
+        box.appendChild(badge);
+
+    }
+
+});
+
+
+}
+
+loadAvailability();
 
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("close");
 const openDrive = document.getElementById("openDrive");
 const buildingName = document.getElementById("buildingName");
 const searchBuilding = document.getElementById("searchBuilding");
+
 
 // =========================
 // Open Popup
@@ -28,6 +72,38 @@ function showBuilding(id) {
     }
 
     buildingName.innerText = building.name;
+    const availableUnits = document.getElementById("availableUnits");
+
+availableUnits.innerHTML = "";
+
+const buildingCode = "BM-" + id.substring(1);
+
+const units = availability.filter(function(item){
+
+    return item.unit.startsWith(buildingCode);
+
+});
+
+availableUnits.innerHTML =
+"<h3>Available Units (" + units.length + ")</h3>";
+
+if(units.length === 0){
+
+    availableUnits.innerHTML +=
+    "<p>No Available Units</p>";
+
+}else{
+
+    units.forEach(function(item){
+
+        availableUnits.innerHTML +=
+        "<div class='unit-box'>" +
+        item.unit +
+        "</div>";
+
+    });
+
+}
 
     openDrive.onclick = function () {
         window.open(building.drive, "_blank");
@@ -61,13 +137,7 @@ document.querySelectorAll(".building").forEach(function (box) {
             return;
         }
 
-        buildingName.innerText = building.name;
-
-        openDrive.onclick = function () {
-            window.open(building.drive, "_blank");
-        };
-
-        popup.style.display = "block";
+        showBuilding(this.id);
 
     };
 
@@ -142,6 +212,35 @@ searchBuilding.addEventListener("keydown", function(e){
     }
 
     buildingName.innerText = building.name;
+    const availableUnits = document.getElementById("availableUnits");
+
+availableUnits.innerHTML = "";
+
+const units = availability[id] || [];
+
+if (units.length === 0) {
+
+    availableUnits.innerHTML =
+        "<p>No Available Units</p>";
+
+} else {
+
+    availableUnits.innerHTML = "<h3>Available Units</h3>";
+
+    units.forEach(function(unit){
+
+        availableUnits.innerHTML += `
+        <div class="unit-card">
+            <b>${unit.unit}</b><br>
+            ${unit.floor}<br>
+            ${unit.type}<br>
+            ${unit.area} m²
+        </div>
+        `;
+
+    });
+
+}
 
     openDrive.onclick = function(){
 
