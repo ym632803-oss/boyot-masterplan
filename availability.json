@@ -84,6 +84,13 @@
         "price": 8030000
     },
     {
+        "unit": "BM-09-302",
+        "floor": "3rd Floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 10260000
+    },
+    {
         "unit": "BM-11-102",
         "floor": "1st Floor",
         "type": "3 bedrooms",
@@ -105,25 +112,11 @@
         "price": 5254500
     },
     {
-        "unit": "BM-11-201",
-        "floor": "2nd Floor",
-        "type": "2 bedrooms",
-        "area": 116,
-        "price": 5394000
-    },
-    {
         "unit": "BM-11-202",
         "floor": "2nd Floor",
         "type": "3 bedrooms",
         "area": 158,
         "price": 7426000
-    },
-    {
-        "unit": "BM-11-206",
-        "floor": "2nd Floor",
-        "type": "2 bedrooms",
-        "area": 113,
-        "price": 5254500
     },
     {
         "unit": "BM-11-301",
@@ -147,13 +140,6 @@
         "price": 6900000
     },
     {
-        "unit": "BM-11-306",
-        "floor": "3rd Floor",
-        "type": "2 bedrooms",
-        "area": 113,
-        "price": 5141500
-    },
-    {
         "unit": "BM-11-401",
         "floor": "4th Floor",
         "type": "2 bedrooms",
@@ -166,13 +152,6 @@
         "type": "3 bedrooms",
         "area": 158,
         "price": 7426000
-    },
-    {
-        "unit": "BM-11-404",
-        "floor": "4th Floor",
-        "type": "3 bedrooms",
-        "area": 150,
-        "price": 6900000
     },
     {
         "unit": "BM-12-103A",
@@ -343,13 +322,6 @@
         "price": 9686000
     },
     {
-        "unit": "BM-43-102",
-        "floor": "1st floor",
-        "type": "3 bedrooms",
-        "area": 174,
-        "price": 9048000
-    },
-    {
         "unit": "BM-43-403",
         "floor": "4th floor",
         "type": "Studio",
@@ -371,13 +343,6 @@
         "price": 8265000
     },
     {
-        "unit": "BM-44-202",
-        "floor": "2nd floor",
-        "type": "Studio",
-        "area": 89,
-        "price": 4183000
-    },
-    {
         "unit": "BM-44-203",
         "floor": "2nd floor",
         "type": "3 bedrooms",
@@ -397,13 +362,6 @@
         "type": "2 bedrooms",
         "area": 113,
         "price": 5198000
-    },
-    {
-        "unit": "BM-44-402",
-        "floor": "4th floor",
-        "type": "Studio",
-        "area": 89,
-        "price": 4183000
     },
     {
         "unit": "BM-44-403",
