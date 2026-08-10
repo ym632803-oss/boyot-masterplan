@@ -1,145 +1,325 @@
 // =======================================
 // Beyout New Mansoura
-// Version : 1.1 Sales Release
-// Developer : Youseef Mohamed
+// Version : 2.0
 // =======================================
 
 // =========================
 // Elements
 // =========================
-// =========================
-// Availability Data
-// =========================
-
-let availability = {};
-
-// =========================
-// Load Availability
-// =========================
-
-async function loadAvailability() {
-
-    const response = await fetch("availability.json");
-
-    availability = await response.json();
-    document.querySelectorAll(".building").forEach(function(box){
-
-    const buildingCode = box.id.replace("A","BM-");
-
-    const count = availability.filter(function(item){
-
-        return item.unit.startsWith(buildingCode);
-
-    }).length;
-
-    if(count > 0){
-
-        const badge = document.createElement("div");
-
-        badge.className = "badge";
-
-        badge.innerText = count;
-
-        box.appendChild(badge);
-
-    }
-
-});
-
-
-}
-
-loadAvailability();
 
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("close");
 const openDrive = document.getElementById("openDrive");
 const buildingName = document.getElementById("buildingName");
 const searchBuilding = document.getElementById("searchBuilding");
-
+const searchResults = document.getElementById("searchResults");
+const tooltip = document.getElementById("tooltip");
+const availableUnits = document.getElementById("availableUnits");
 
 // =========================
-// Open Popup
+// Data
 // =========================
 
-function showBuilding(id) {
+let availability = [];
+let currentBuilding = null;
 
-    const building = buildings[id];
+// =========================
+// Buildings Status
+// =========================
 
-    if (!building) {
-        alert("Building not found: " + id);
-        return;
-    }
+function updateBuildingsStatus(){
 
-    buildingName.innerText = building.name;
-    const availableUnits = document.getElementById("availableUnits");
+    document.querySelectorAll(".building").forEach(function(box){
 
-availableUnits.innerHTML = "";
+        const buildingCode =
+        "BM-" + box.id.substring(1).padStart(2,"0");
 
-const buildingCode = "BM-" + id.substring(1);
+        const hasUnits = availability.some(function(item){
 
-const units = availability.filter(function(item){
+            return item.unit.startsWith(buildingCode);
 
-    return item.unit.startsWith(buildingCode);
+        });
 
-});
+        if(hasUnits){
 
-availableUnits.innerHTML =
-"<h3>Available Units (" + units.length + ")</h3>";
+            box.classList.add("available");
 
-if(units.length === 0){
+        }else{
 
-    availableUnits.innerHTML +=
-    "<p>No Available Units</p>";
+            box.classList.remove("available");
 
-}else{
-
-    units.forEach(function(item){
-
-        availableUnits.innerHTML +=
-        "<div class='unit-box'>" +
-        item.unit +
-        "</div>";
+        }
 
     });
 
 }
+// =========================
+// Load Availability
+// =========================
 
-    openDrive.onclick = function () {
-        window.open(building.drive, "_blank");
+async function loadAvailability(){
+
+    try{
+
+        const response = await fetch("availability.json");
+
+        availability = await response.json();
+
+        console.log("Availability Loaded");
+
+        updateBuildingsStatus();
+
+        if(currentBuilding){
+            showBuilding(currentBuilding,false);
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+// =========================
+// Show Building
+// =========================
+
+function showBuilding(id,openPopup=true){
+
+    currentBuilding=id;
+
+    const building=buildings[id];
+
+    if(!building) return;
+
+    buildingName.innerText=building.name;
+
+    const buildingCode=
+    "BM-"+id.substring(1).padStart(2,"0");
+
+    const units=availability.filter(function(item){
+
+        return item.unit.startsWith(buildingCode);
+
+    });
+
+    availableUnits.innerHTML=
+    "<h3>Available Units ("+units.length+")</h3>";
+
+    if(units.length===0){
+
+        availableUnits.innerHTML+="<p>No Available Units</p>";
+
+    }else{
+
+        units.forEach(function(item){
+
+            availableUnits.innerHTML += `
+
+             <div class="unit-number">
+                 🏠 ${item.unit}
+             </div>
+
+            <div class="unit-status">
+                 🟢 Available
+              </div>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    openDrive.onclick=function(){
+
+        window.open(building.drive,"_blank");
+
     };
 
-    popup.style.display = "block";
+    if(openPopup){
+
+        popup.style.display="block";
+
+    }
+
 }
 
 // =========================
-// Close Popup
+// Buildings Click
 // =========================
 
-closeBtn.onclick = function () {
+document.querySelectorAll(".building").forEach(function(box){
 
-    popup.style.display = "none";
+    box.addEventListener("click",function(){
+
+        showBuilding(this.id);
+
+    });
+
+});
+
+// =========================
+// Smart Live Search
+// =========================
+
+function normalizeSearch(value){
+
+    return value
+        .toUpperCase()
+        .replace(/[\s-]/g,"");
+
+}
+
+searchBuilding.addEventListener("input",function(){
+
+    const query = normalizeSearch(this.value);
+
+    searchResults.innerHTML = "";
+
+    if(!query){
+
+        searchResults.style.display = "none";
+
+        return;
+
+    }
+
+    const results = [];
+
+    document.querySelectorAll(".building").forEach(function(box){
+
+        const id = box.id;
+
+        const name =
+            buildings[id] && buildings[id].name
+            ? buildings[id].name
+            : id;
+
+        const normalizedID = normalizeSearch(id);
+        const normalizedName = normalizeSearch(name);
+
+        if(
+            normalizedID.includes(query) ||
+            normalizedName.includes(query)
+        ){
+
+            const buildingCode =
+                "BM-" + id.substring(1).padStart(2,"0");
+
+            const units = availability.filter(function(item){
+
+                return item.unit.startsWith(buildingCode);
+
+            }).length;
+
+            results.push({
+
+                id:id,
+                name:name,
+                units:units
+
+            });
+
+        }
+
+    });
+
+    if(results.length === 0){
+
+        searchResults.innerHTML = `
+            <div class="no-results">
+                No buildings found
+            </div>
+        `;
+
+        searchResults.style.display = "block";
+
+        return;
+
+    }
+
+    results.forEach(function(result){
+
+        const item = document.createElement("div");
+
+        item.className = "search-result";
+
+        item.innerHTML = `
+
+            <div class="search-result-name">
+                🏢 ${result.name}
+            </div>
+
+            <div class="search-result-info">
+                ${
+                    result.units > 0
+                    ? "🟢 " + result.units + " Available Units"
+                    : "No Available Units"
+                }
+            </div>
+
+        `;
+
+        item.onclick = function(){
+
+            const box =
+                document.getElementById(result.id);
+
+            if(box){
+
+                box.classList.add("highlight");
+
+                setTimeout(function(){
+
+                    box.classList.remove("highlight");
+
+                },2000);
+
+            }
+
+            showBuilding(result.id);
+
+            searchBuilding.value = "";
+
+            searchResults.innerHTML = "";
+
+            searchResults.style.display = "none";
+
+        };
+
+        searchResults.appendChild(item);
+
+    });
+
+    searchResults.style.display = "block";
+
+});
+
+// =========================
+// Popup
+// =========================
+
+closeBtn.onclick=function(){
+
+    popup.style.display="none";
 
 };
 
 // =========================
-// Click Buildings
+// Escape
 // =========================
 
-document.querySelectorAll(".building").forEach(function (box) {
+document.addEventListener("keydown",function(e){
 
-    box.onclick = function () {
+    if(e.key==="Escape"){
 
-        const building = buildings[this.id];
+        popup.style.display="none";
 
-        if (!building) {
-            alert("Building not found");
-            return;
-        }
-
-        showBuilding(this.id);
-
-    };
+    }
 
 });
 
@@ -147,124 +327,35 @@ document.querySelectorAll(".building").forEach(function (box) {
 // Tooltip
 // =========================
 
-const tooltip = document.getElementById("tooltip");
-
 document.querySelectorAll(".building").forEach(function(box){
 
-    box.addEventListener("mouseenter", function(){
+    box.addEventListener("mouseenter",function(){
 
-        tooltip.style.display = "block";
+        tooltip.style.display="block";
 
-        if(buildings[this.id]){
-            tooltip.innerText = buildings[this.id].name;
-        }else{
-            tooltip.innerText = this.id;
-        }
+        tooltip.innerText=
 
-    });
+        buildings[this.id]
 
-    box.addEventListener("mousemove", function(e){
+        ? buildings[this.id].name
 
-        tooltip.style.left = (e.pageX + 15) + "px";
-        tooltip.style.top  = (e.pageY - 35) + "px";
+        : this.id;
 
     });
 
-    box.addEventListener("mouseleave", function(){
+    box.addEventListener("mousemove",function(e){
 
-        tooltip.style.display = "none";
+        tooltip.style.left=(e.pageX+15)+"px";
 
-    });
-
-});
-
-// =========================
-// Search Building
-// =========================
-
-searchBuilding.addEventListener("keydown", function(e){
-
-    if(e.key !== "Enter") return;
-
-    const id = this.value.trim().toUpperCase();
-
-    const building = buildings[id];
-    const box = document.getElementById(id);
-
-    if(box){
-
-        box.classList.add("highlight");
-
-        setTimeout(function(){
-
-            box.classList.remove("highlight");
-
-        },2000);
-
-    }
-
-    if(!building){
-
-        alert("Building not found!");
-
-        return;
-
-    }
-
-    buildingName.innerText = building.name;
-    const availableUnits = document.getElementById("availableUnits");
-
-availableUnits.innerHTML = "";
-
-const units = availability[id] || [];
-
-if (units.length === 0) {
-
-    availableUnits.innerHTML =
-        "<p>No Available Units</p>";
-
-} else {
-
-    availableUnits.innerHTML = "<h3>Available Units</h3>";
-
-    units.forEach(function(unit){
-
-        availableUnits.innerHTML += `
-        <div class="unit-card">
-            <b>${unit.unit}</b><br>
-            ${unit.floor}<br>
-            ${unit.type}<br>
-            ${unit.area} m²
-        </div>
-        `;
+        tooltip.style.top=(e.pageY-35)+"px";
 
     });
 
-}
+    box.addEventListener("mouseleave",function(){
 
-    openDrive.onclick = function(){
+        tooltip.style.display="none";
 
-        window.open(building.drive,"_blank");
-
-    };
-
-    popup.style.display = "block";
-
-    this.value = "";
-
-});
-
-// =========================
-// Keyboard Shortcuts
-// =========================
-
-document.addEventListener("keydown", function(e){
-
-    if(e.key === "Escape"){
-
-        popup.style.display = "none";
-
-    }
+    });
 
 });
 
@@ -272,20 +363,32 @@ document.addEventListener("keydown", function(e){
 // Loading Screen
 // =========================
 
-window.addEventListener("load", function () {
+window.addEventListener("load",function(){
 
-    const loading = document.getElementById("loadingScreen");
+    const loading=document.getElementById("loadingScreen");
 
-    setTimeout(function () {
+    setTimeout(function(){
 
-        loading.style.opacity = "0";
+        loading.style.opacity="0";
 
-        setTimeout(function () {
+        setTimeout(function(){
 
-            loading.style.display = "none";
+            loading.style.display="none";
 
         },600);
 
     },800);
 
 });
+
+// =========================
+// Auto Refresh
+// =========================
+
+setInterval(loadAvailability,30000);
+
+// =========================
+// Start
+// =========================
+
+window.addEventListener("load",loadAvailability);

@@ -3,6 +3,7 @@ const buildings = {
     A01:{
         name:" A-01",
                 drive:"https://drive.google.com/drive/folders/1SaTld2ApILCvL-atqgYXt5AhztnyfvIy?usp=drive_link",
+                
     },
 
     A02:{

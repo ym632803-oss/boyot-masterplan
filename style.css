@@ -53,13 +53,14 @@ h1{
     width:40px;
     height:40px;
 
-    border:1px solid rgba(255,0,0,.15);
-    background:rgba(255,0,0,.08);
+    
+    background:transparent;
+    border:none;
 
     cursor:pointer;
 
     display:block;
-    opacity:0;
+    
 }
 
 
@@ -267,7 +268,26 @@ h1{
 /* Buttons */
 /* ========================= */
 
+#editMode{
+    margin-bottom:20px;
+    padding:10px 20px;
+    cursor:pointer;
+}
 
+/* ========================= */
+/* Coordinates Box */
+/* ========================= */
+
+#coordinates{
+    width:350px;
+    margin:15px auto;
+    padding:12px;
+    background:#222;
+    color:#00ff00;
+    font-family:Consolas, monospace;
+    font-size:18px;
+    border-radius:8px;
+}
 .popup{
     position:fixed;
     top:50%;
@@ -569,8 +589,8 @@ h1{
 
 .toolbar{
 
-    width:1000px;
-
+    width:100px;
+    max-width:1000;
     margin:20px auto;
 
     display:flex;
@@ -584,19 +604,16 @@ h1{
 }
 
 #searchBuilding{
+    width:100%;
+    box-sizing:border-box;
+    margin:0;
 
-    flex:1;
-
-    max-width:500px;
-
-    padding:14px;
+    padding:14px 18px;
 
     border:1px solid #ddd;
-
     border-radius:10px;
 
     font-size:16px;
-
 }
 
 #clearSearch{
@@ -756,64 +773,245 @@ h1{
     }
 
 }
-.unit-box{
 
-    background:#f4f6fa;
+ .unit-card{
 
-    border:1px solid #d9e2ef;
+   background:#f7f7f7;
+   padding:12px;
+   margin:10px 0;
+   border-radius:10px;
+   border-left:5px solid #0066cc;
 
-    border-radius:8px;
+}
 
-    padding:10px;
+ .unit-number{
 
-    margin:8px 0;
+   font-size:18px;
+   font-weight:bold;
+   margin-bottom:8px;
+
+}
+.building.available::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    background:#00d26a;
+
+    border-radius:50%;
+
+    top:-5px;
+    right:-5px;
+
+    box-shadow:
+        0 0 8px #00d26a,
+        0 0 16px rgba(0,210,106,.8);
+
+    animation:pulse 1.8s infinite;
+
+}
+
+@keyframes pulse{
+
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+
+    }
+
+    
+
+    50%{
+        transform:scale(1.35);
+        opacity:.65;
+
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+
+    }
+
+}
+.unit-card{
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border-left:5px solid #00b050;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+}
+
+.unit-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.unit-number{
+
+    font-size:18px;
 
     font-weight:bold;
 
     color:#003366;
 
-}
-/* ========================= */
-/* Available Badge */
-/* ========================= */
-
-.building{
-
-    position:absolute;
+    margin-bottom:10px;
 
 }
 
-.badge{
+.unit-status{
 
-    position:absolute;
+    display:inline-block;
 
-    top:-10px;
+    background:#e9fff1;
 
-    right:-10px;
+    color:#00a64f;
 
-    width:22px;
+    padding:6px 12px;
 
-    height:22px;
+    border-radius:25px;
 
-    border-radius:50%;
-
-    background:#16a34a;
-
-    color:white;
-
-    font-size:12px;
+    font-size:13px;
 
     font-weight:bold;
 
-    display:flex;
+}
+/* ========================= */
+/* Smart Search */
+/* ========================= */
 
-    align-items:center;
+.search-wrapper{
 
-    justify-content:center;
+    position:relative;
 
-    box-shadow:0 0 10px rgba(0,0,0,.3);
+    width:100%;
 
-    pointer-events:none;
+    max-width:500px;
 
 }
 
+.search-wrapper #searchBuilding{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    margin:0;
+
+}
+
+/* Search Results */
+
+#searchResults{
+
+    position:absolute;
+
+    top:calc(100% + 6px);
+
+    left:0;
+
+    right:0;
+
+    background:white;
+
+    border-radius:14px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+    display:none;
+
+    z-index:99999;
+
+    text-align:left;
+
+}
+
+/* Result */
+
+.search-result{
+
+    padding:14px 16px;
+
+    border-bottom:1px solid #eee;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.search-result:last-child{
+
+    border-bottom:none;
+
+}
+
+.search-result:hover{
+
+    background:#f5f9ff;
+
+}
+
+/* Building Name */
+
+.search-result-name{
+
+    color:#003366;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+}
+
+/* Availability */
+
+.search-result-info{
+
+    margin-top:5px;
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+/* No Results */
+
+.no-results{
+
+    padding:18px;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:14px;
+
+}
+.search-wrapper{
+    position:relative;
+    width:500px;
+    max-width:90%;
+    margin:0 auto;
+}

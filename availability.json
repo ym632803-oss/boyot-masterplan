@@ -1,61 +1,415 @@
 [
-  {"unit":"BM-01-404"},
-  {"unit":"BM-02-402"},
-  {"unit":"BM-03-203"},
-  {"unit":"BM-03-402"},
-  {"unit":"BM-04-403B"},
-  {"unit":"BM-05-006"},
-  {"unit":"BM-05-401"},
-  {"unit":"BM-06-004"},
-  {"unit":"BM-06-205"},
-  {"unit":"BM-06-405"},
-  {"unit":"BM-06-406"},
-  {"unit":"BM-08-404"},
-  {"unit":"BM-11-102"},
-  {"unit":"BM-11-104"},
-  {"unit":"BM-11-106"},
-  {"unit":"BM-11-201"},
-  {"unit":"BM-11-202"},
-  {"unit":"BM-11-206"},
-  {"unit":"BM-11-301"},
-  {"unit":"BM-11-302"},
-  {"unit":"BM-11-304"},
-  {"unit":"BM-11-306"},
-  {"unit":"BM-11-401"},
-  {"unit":"BM-11-402"},
-  {"unit":"BM-11-404"},
-  {"unit":"BM-12-103A"},
-  {"unit":"BM-12-103B"},
-  {"unit":"BM-12-104"},
-  {"unit":"BM-12-105"},
-  {"unit":"BM-12-205"},
-  {"unit":"BM-12-305"},
-  {"unit":"BM-12-403A"},
-  {"unit":"BM-12-403B"},
-  {"unit":"BM-12-404"},
-  {"unit":"BM-16-402"},
-  {"unit":"BM-16-406"},
-  {"unit":"BM-17-405"},
-  {"unit":"BM-18-402A"},
-  {"unit":"BM-19-302"},
-  {"unit":"BM-19-303"},
-  {"unit":"BM-19-304"},
-  {"unit":"BM-19-403"},
-  {"unit":"BM-32-201"},
-  {"unit":"BM-33-003"},
-  {"unit":"BM-33-105"},
-  {"unit":"BM-33-402"},
-  {"unit":"BM-35-403"},
-  {"unit":"BM-40-003"},
-  {"unit":"BM-40-401"},
-  {"unit":"BM-43-102"},
-  {"unit":"BM-43-403"},
-  {"unit":"BM-44-101"},
-  {"unit":"BM-44-104"},
-  {"unit":"BM-44-202"},
-  {"unit":"BM-44-203"},
-  {"unit":"BM-44-303"},
-  {"unit":"BM-44-401"},
-  {"unit":"BM-44-402"},
-  {"unit":"BM-44-403"}
+    {
+        "unit": "BM-01-404",
+        "floor": "4th floor",
+        "type": "3 bedrooms",
+        "area": 223,
+        "price": 12488000
+    },
+    {
+        "unit": "BM-02-402",
+        "floor": "4th floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 10260000
+    },
+    {
+        "unit": "BM-03-203",
+        "floor": "2nd Floor",
+        "type": "3 bedrooms",
+        "area": 175,
+        "price": 9625000
+    },
+    {
+        "unit": "BM-03-402",
+        "floor": "4th Floor",
+        "type": "3 bedrooms",
+        "area": 175,
+        "price": 9800000
+    },
+    {
+        "unit": "BM-04-403B",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 123,
+        "price": 6642000
+    },
+    {
+        "unit": "BM-05-006",
+        "floor": "Ground",
+        "type": "Studio",
+        "area": 66,
+        "price": 3796000
+    },
+    {
+        "unit": "BM-05-401",
+        "floor": "4th floor",
+        "type": "2 bedrooms",
+        "area": 116,
+        "price": 6032000
+    },
+    {
+        "unit": "BM-06-004",
+        "floor": "Ground",
+        "type": "Studio",
+        "area": 60,
+        "price": 3730000
+    },
+    {
+        "unit": "BM-06-205",
+        "floor": "2nd Floor",
+        "type": "2 bedrooms",
+        "area": 116,
+        "price": 6148000
+    },
+    {
+        "unit": "BM-06-405",
+        "floor": "4th floor",
+        "type": "2 bedrooms",
+        "area": 116,
+        "price": 6496000
+    },
+    {
+        "unit": "BM-06-406",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 5989000
+    },
+    {
+        "unit": "BM-08-404",
+        "floor": "4th Floor",
+        "type": "3 bedrooms",
+        "area": 146,
+        "price": 8030000
+    },
+    {
+        "unit": "BM-11-102",
+        "floor": "1st Floor",
+        "type": "3 bedrooms",
+        "area": 158,
+        "price": 7426000
+    },
+    {
+        "unit": "BM-11-104",
+        "floor": "1st Floor",
+        "type": "3 bedrooms",
+        "area": 150,
+        "price": 6900000
+    },
+    {
+        "unit": "BM-11-106",
+        "floor": "1st Floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 5254500
+    },
+    {
+        "unit": "BM-11-201",
+        "floor": "2nd Floor",
+        "type": "2 bedrooms",
+        "area": 116,
+        "price": 5394000
+    },
+    {
+        "unit": "BM-11-202",
+        "floor": "2nd Floor",
+        "type": "3 bedrooms",
+        "area": 158,
+        "price": 7426000
+    },
+    {
+        "unit": "BM-11-206",
+        "floor": "2nd Floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 5254500
+    },
+    {
+        "unit": "BM-11-301",
+        "floor": "3rd Floor",
+        "type": "2 bedrooms",
+        "area": 116,
+        "price": 5394000
+    },
+    {
+        "unit": "BM-11-302",
+        "floor": "3rd Floor",
+        "type": "3 bedrooms",
+        "area": 158,
+        "price": 7426000
+    },
+    {
+        "unit": "BM-11-304",
+        "floor": "3rd Floor",
+        "type": "3 bedrooms",
+        "area": 150,
+        "price": 6900000
+    },
+    {
+        "unit": "BM-11-306",
+        "floor": "3rd Floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 5141500
+    },
+    {
+        "unit": "BM-11-401",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 116,
+        "price": 5336000
+    },
+    {
+        "unit": "BM-11-402",
+        "floor": "4th Floor",
+        "type": "3 bedrooms",
+        "area": 158,
+        "price": 7426000
+    },
+    {
+        "unit": "BM-11-404",
+        "floor": "4th Floor",
+        "type": "3 bedrooms",
+        "area": 150,
+        "price": 6900000
+    },
+    {
+        "unit": "BM-12-103A",
+        "floor": "1st Floor",
+        "type": "2 bedrooms",
+        "area": 128,
+        "price": 6080000
+    },
+    {
+        "unit": "BM-12-103B",
+        "floor": "1st Floor",
+        "type": "2 bedrooms",
+        "area": 123,
+        "price": 5904000
+    },
+    {
+        "unit": "BM-12-104",
+        "floor": "1st Floor",
+        "type": "2 bedrooms",
+        "area": 122,
+        "price": 5673000
+    },
+    {
+        "unit": "BM-12-105",
+        "floor": "1st Floor",
+        "type": "2 bedrooms",
+        "area": 120,
+        "price": 5640000
+    },
+    {
+        "unit": "BM-12-205",
+        "floor": "2nd Floor",
+        "type": "2 bedrooms",
+        "area": 120,
+        "price": 5640000
+    },
+    {
+        "unit": "BM-12-305",
+        "floor": "3rd Floor",
+        "type": "2 bedrooms",
+        "area": 120,
+        "price": 5640000
+    },
+    {
+        "unit": "BM-12-403A",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 128,
+        "price": 6080000
+    },
+    {
+        "unit": "BM-12-403B",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 123,
+        "price": 5904000
+    },
+    {
+        "unit": "BM-12-404",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 122,
+        "price": 5673000
+    },
+    {
+        "unit": "BM-16-402",
+        "floor": "4th Floor",
+        "type": "3 bedrooms",
+        "area": 150,
+        "price": 8400000
+    },
+    {
+        "unit": "BM-16-406",
+        "floor": "4th Floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 6215000
+    },
+    {
+        "unit": "BM-17-405",
+        "floor": "4th Floor",
+        "type": "Studio",
+        "area": 89,
+        "price": 5073000
+    },
+    {
+        "unit": "BM-18-402A",
+        "floor": "4th floor",
+        "type": "2 bedrooms",
+        "area": 107,
+        "price": 5885000
+    },
+    {
+        "unit": "BM-19-302",
+        "floor": "3rd Floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 10260000
+    },
+    {
+        "unit": "BM-19-303",
+        "floor": "3rd Floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 9918000
+    },
+    {
+        "unit": "BM-19-304",
+        "floor": "3rd Floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 9747000
+    },
+    {
+        "unit": "BM-19-403",
+        "floor": "4th Floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 9918000
+    },
+    {
+        "unit": "BM-32-201",
+        "floor": "2nd Floor",
+        "type": "3 bedrooms",
+        "area": 171,
+        "price": 9918000
+    },
+    {
+        "unit": "BM-33-003",
+        "floor": "Ground",
+        "type": "3 bedrooms",
+        "area": 155,
+        "price": 8835000
+    },
+    {
+        "unit": "BM-33-105",
+        "floor": "1st Floor",
+        "type": "Studio",
+        "area": 81,
+        "price": 4455000
+    },
+    {
+        "unit": "BM-33-402",
+        "floor": "4th floor",
+        "type": "3 bedrooms",
+        "area": 175,
+        "price": 9975000
+    },
+    {
+        "unit": "BM-35-403",
+        "floor": "4th floor",
+        "type": "Studio",
+        "area": 66,
+        "price": 3630000
+    },
+    {
+        "unit": "BM-40-003",
+        "floor": "Ground",
+        "type": "3 bedrooms",
+        "area": 180,
+        "price": 12420000
+    },
+    {
+        "unit": "BM-40-401",
+        "floor": "4th floor",
+        "type": "3 bedrooms",
+        "area": 167,
+        "price": 9686000
+    },
+    {
+        "unit": "BM-43-102",
+        "floor": "1st floor",
+        "type": "3 bedrooms",
+        "area": 174,
+        "price": 9048000
+    },
+    {
+        "unit": "BM-43-403",
+        "floor": "4th floor",
+        "type": "Studio",
+        "area": 69,
+        "price": 3312000
+    },
+    {
+        "unit": "BM-44-101",
+        "floor": "1st floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 5198000
+    },
+    {
+        "unit": "BM-44-104",
+        "floor": "1st floor",
+        "type": "3 bedrooms",
+        "area": 174,
+        "price": 8265000
+    },
+    {
+        "unit": "BM-44-202",
+        "floor": "2nd floor",
+        "type": "Studio",
+        "area": 89,
+        "price": 4183000
+    },
+    {
+        "unit": "BM-44-203",
+        "floor": "2nd floor",
+        "type": "3 bedrooms",
+        "area": 174,
+        "price": 8265000
+    },
+    {
+        "unit": "BM-44-303",
+        "floor": "3rd floor",
+        "type": "3 bedrooms",
+        "area": 174,
+        "price": 8265000
+    },
+    {
+        "unit": "BM-44-401",
+        "floor": "4th floor",
+        "type": "2 bedrooms",
+        "area": 113,
+        "price": 5198000
+    },
+    {
+        "unit": "BM-44-402",
+        "floor": "4th floor",
+        "type": "Studio",
+        "area": 89,
+        "price": 4183000
+    },
+    {
+        "unit": "BM-44-403",
+        "floor": "4th floor",
+        "type": "3 bedrooms",
+        "area": 174,
+        "price": 8265000
+    }
 ]
