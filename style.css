@@ -1233,4 +1233,222 @@ h1{
     }
 
 }
+[3:08 PM, 8/10/2026] Yousef Mohamed: /* =======================================
+   MOBILE FIX - FINAL
+======================================= */
 
+@media (max-width: 600px){
+
+    html,
+    body{
+        margin:0;
+        padding:0;
+        width:100%;
+        overflow-x:hidden;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header{
+        width:100%;
+        box-sizing:border-box;
+        padding:15px 10px 5px;
+    }
+
+    #logo{
+        width:95px;
+    }
+
+    .header h1{
+        font-size:24px;
+        margin:0;
+        text-align:center;
+    }
+
+    .header p{
+        font-size:12px;
+        text-align:center;
+    }
+
+
+    /* =========================
+       PROJECT INFO
+    ========================= */
+
+    .project-info{
+        width:100%;
+       …
+[3:48 PM, 8/11/2026] Yousef Mohamed: /* =======================================
+   MOBILE FIX
+   Map + Tooltip
+======================================= */
+
+@media (max-width: 600px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+        overflow-x:hidden;
+    }
+
+    /* Header */
+    .header{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .header h1{
+        font-size:24px;
+        text-align:center;
+    }
+
+    /* Project cards */
+    .project-info{
+        width:100%;
+        box-sizing:border-box;
+        padding:0 10px;
+        gap:8px;
+    }
+
+    .info-card{
+        min-width:0;
+        box-sizing:border-box;
+    }
+
+    /* Search */
+    .toolbar{
+        width:100%;
+        max-width:none;
+        box-sizing:border-box;
+        padding:0 15px;
+        margin:12px 0;
+    }
+
+    .search-wrapper{
+        width:100%;
+        max-width:none;
+        box-sizing:border-box;
+    }
+
+    #searchBuilding{
+        width:100%;
+        box-sizing:border-box;
+        margin:0;
+    }
+
+    /* =========================
+       MAP
+    ========================= */
+
+    .container{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+
+        margin:15px 0;
+        padding:10px;
+
+        overflow:hidden;
+    }
+
+    #masterplan{
+        width:100%;
+        height:auto;
+        display:block;
+    }
+
+    /* =========================
+       BUILDINGS
+    ========================= */
+
+    .building{
+        /*
+        نخلي المربعات شفافة
+        لكن تفضل قابلة للضغط
+        */
+        background:transparent !important;
+        border:none !important;
+        box-shadow:none !important;
+    }
+
+    .building:hover{
+        background:transparent !important;
+        border:none !important;
+        box-shadow:none !important;
+        transform:none !important;
+    }
+
+    /* =========================
+       TOOLTIP
+       إلغاء المربع الأزرق
+    ========================= */
+
+    #tooltip{
+        display:none !important;
+    }
+
+    /* =========================
+       GREEN AVAILABLE DOT
+    ========================= */
+
+    .building.available::after{
+        content:"";
+
+        position:absolute;
+
+        width:12px;
+        height:12px;
+
+        background:#00d26a;
+
+        border-radius:50%;
+
+        border:2px solid white;
+
+        top:-5px;
+        right:-5px;
+
+        box-shadow:
+            0 0 8px rgba(0,210,106,.8);
+
+        animation:pulse 1.8s infinite;
+    }
+
+    /* =========================
+       POPUP
+    ========================= */
+
+    .popup{
+        width:calc(100% - 40px);
+        max-width:340px;
+
+        box-sizing:border-box;
+
+        padding:20px;
+
+        z-index:100000;
+    }
+
+    .popup-header{
+        margin:-20px -20px 15px -20px;
+        padding:15px;
+    }
+
+    .popup-header h2{
+        font-size:21px;
+    }
+
+    /* =========================
+       DEV
+    ========================= */
+
+    #coordinates,
+    #devMode,
+    #editMode{
+        display:none !important;
+    }
+
+}
