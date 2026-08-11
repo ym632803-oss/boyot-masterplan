@@ -1233,54 +1233,7 @@ h1{
     }
 
 }
-[3:08 PM, 8/10/2026] Yousef Mohamed: /* =======================================
-   MOBILE FIX - FINAL
-======================================= */
-
-@media (max-width: 600px){
-
-    html,
-    body{
-        margin:0;
-        padding:0;
-        width:100%;
-        overflow-x:hidden;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header{
-        width:100%;
-        box-sizing:border-box;
-        padding:15px 10px 5px;
-    }
-
-    #logo{
-        width:95px;
-    }
-
-    .header h1{
-        font-size:24px;
-        margin:0;
-        text-align:center;
-    }
-
-    .header p{
-        font-size:12px;
-        text-align:center;
-    }
-
-
-    /* =========================
-       PROJECT INFO
-    ========================= */
-
-    .project-info{
-        width:100%;
-       …
-[3:48 PM, 8/11/2026] Yousef Mohamed: /* =======================================
+/* =======================================
    MOBILE FIX
    Map + Tooltip
 ======================================= */
